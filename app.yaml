@@ -1,0 +1,23 @@
+application: mallbotkol
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: no
+
+handlers:
+ - url: /
+   static_files: index.html
+   upload: index\.html
+ - url: /index.html
+   static_files: index.html
+   upload: index\.html
+ - url: /mallbot/
+   script: mallbot.py
+ - url: /index.html
+   script: main.py
+ - url: /favicon\.ico
+   static_files: favicon.ico
+   upload: favicon\.ico
+ - url: /login/
+   static_files: login.html
+   upload: login\.html
