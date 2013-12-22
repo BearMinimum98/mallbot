@@ -20,10 +20,8 @@ def init():
     if __isInitialized == True:
         return
 
-    # Report.trace("itemdatabase", "Initializing the item database.")
     returnCode = FilterManager.executeFiltersForEvent("preInitializeItemDatabase")
     if returnCode == FilterManager.FINISHED:
-        # Report.trace("itemdatabase", "Item database initialized.")
         __isInitialized = True
         return
 
@@ -32,7 +30,6 @@ def init():
 
     FilterManager.executeFiltersForEvent("postInitializeItemDatabase")
     __isInitialized = True
-    # Report.trace("itemdatabase", "Item database initialized.")
 
 def addItem(item):
     "Adds an item to the database."
@@ -106,7 +103,6 @@ def discoverMissingItems(session):
                 itemData = itemRequest.doRequest()
                 item = itemData["item"]
                 addItem(item)
-                # Report.trace("itemdatabase", "Discovered new item: %s" % item["name"])
                 
                 context = { "item" : item }
                 FilterManager.executeFiltersForEvent("discoveredNewItem", context, session=session, item=item)
